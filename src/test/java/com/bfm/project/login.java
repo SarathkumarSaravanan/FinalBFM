@@ -27,7 +27,7 @@ driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 WebElement usname= driver.findElement(By.xpath("//input[@type='text']"));
 usname.sendKeys("inntechadmin@yourchildsday.com");
 WebElement psw=driver.findElement(By.xpath("//input[@type='password']"));
-psw.sendKeys("02xU^lA4e4gz");
+psw.sendKeys("IN02xU^lA4e4gz");
 WebElement btn=driver.findElement(By.xpath("//button[@type='submit']"));
 btn.click();
 WebElement saSite=driver.findElement(By.xpath("//div[text()='SA']"));
