@@ -28,7 +28,7 @@ public class RegisterAccount {
 	public static WebDriver driver;
 	
 	
-	@Test(priority=1)
+	@Test()
 public static void createacc() throws InterruptedException
 {
 		driver = new FirefoxDriver();
