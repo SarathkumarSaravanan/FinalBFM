@@ -4,6 +4,7 @@
   <test thread-count="5" name="Test">
     <classes>
 		 <class name="com.bfm.project.login"/>
+	    <class name="com.bfm.project.RegisterAccount"/>
          </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
