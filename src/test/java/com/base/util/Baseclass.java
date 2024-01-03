@@ -97,7 +97,7 @@ public class Baseclass {
 	String imagePath=path+ScreenshotId+".png";
 	File dest= new File(imagePath);
 	FileUtils.copyFile(Screenshot, dest);
-	String Imagepath="../ExtendReports/"+ScreenshotId+".png";
+	String Imagepath="../ws/ExtendReports/"+ScreenshotId+".png";
 	return Imagepath;
 	}
 	@AfterSuite
