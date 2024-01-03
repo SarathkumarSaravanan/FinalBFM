@@ -92,7 +92,7 @@ public class Baseclass {
 	{
 	Long l = Calendar.getInstance().getTimeInMillis();
 	String ScreenshotId = l.toString();
-	String path=System.getProperty("user.dir")+"/ExtendReports/";
+	String path=System.getProperty("user.dir")+"/ws/ExtendReports/";
 	File Screenshot =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	String imagePath=path+ScreenshotId+".png";
 	File dest= new File(imagePath);
