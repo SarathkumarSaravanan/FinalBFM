@@ -37,20 +37,67 @@ public class Baseclass {
 	public static ExtentReports extent;
 	public static ExtentTest test;
 	public static WebDriver driver;
+	public static Date dt = new Date();
+	public static  SimpleDateFormat sdf= new SimpleDateFormat("hh:mm:ss");
+	public static  String date=sdf.format(dt);
+	public static String dt1=date.replace(":","");
+	public TakesScreenshot tks;
+	@BeforeSuite
 	public static void createReport()
 	{
-	reporter = new ExtentSparkReporter("user.dir"+"/target/extentReport.html");
+	reporter = new ExtentSparkReporter("./target/extentReport.html");
 	extent=new ExtentReports();
 	extent.attachReporter(reporter);
+	
 	}
 	public static void createTest(String testName)
 	{
 		test=extent.createTest(testName);
 	}
-	public static void teststatus(String status) {
+
+	public static void teststatus(String status, String description) throws IOException {
 		
+	switch(status)
+	{
+	case "pass":
+	test.pass(description);
+	break;
+	case "fail":
+	test.fail(description, MediaEntityBuilder.createScreenCaptureFromPath(addScreenshots()).build());
+	break;
+	case "skip":
+	test.skip(description);
+	break;
+	case "fail with success percentage":
+	test.fail(description);
+	break;
+	case "passScreenshot":
+		test.pass(description, MediaEntityBuilder.createScreenCaptureFromPath(addScreenshots()).build());
+	test.pass(description);
+	case "default":
+	test.info(description);
+	break;
+	
 	}
 	
+	}
+	public static synchronized String addScreenshots() throws IOException
+	{
+	Long l = Calendar.getInstance().getTimeInMillis();
+	String ScreenshotId = l.toString();
+	String path=System.getProperty("user.dir")+"/ExtendReports/";
+	File Screenshot =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	String imagePath=path+ScreenshotId+".png";
+	File dest= new File(imagePath);
+	FileUtils.copyFile(Screenshot, dest);
+	String Imagepath="../ExtendReports/"+ScreenshotId+".png";
+	return Imagepath;
+	}
+	@AfterSuite
+	public static void stop()
+	{
+	extent.flush();	
+	}
 	
 	public static void openbrowser(String option)
 	{
