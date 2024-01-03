@@ -126,7 +126,25 @@ teststatus("passScreenshot", "Enter into a Home Page");
 		cpsw.sendKeys("Vss@1234");
 		WebElement regbtn=driver.findElement(By.xpath("//input[@value='REGISTER']"));
 		regbtn.click();
-		stop();
+		
+	}
+	@Test(dependsOnMethods="login")
+	public static void logoutTheAccount() throws IOException, InterruptedException
+	{
+		createTest("LogOut Account");
+		
+	WebElement logout=	driver.findElement(By.xpath("//span[text()='IA']"));
+	moveToElement(logout);
+	teststatus("pass", "Hover to Logout");
+	WebElement lgBtn=driver.findElement(By.xpath("//a[text()='Log out']"));
+	lgBtn.click();
+	teststatus("pass", "logout button clicked");
+	WebElement yesBtn=driver.findElement(By.xpath("(//button[@id='Yes'])[1]"));
+	yesBtn.click();
+	Thread.sleep(3000);
+	teststatus("passScreenshot", "Confirmation clicked Logout Successfully Enter into signIn Page");
+	driver.close();
+	stop();
 	}
 
 }
