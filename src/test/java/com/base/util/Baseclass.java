@@ -80,7 +80,7 @@ public class Baseclass {
 	break;
 	case "passScreenshot":
 		test.pass(description, MediaEntityBuilder.createScreenCaptureFromPath(addScreenshots()).build());
-	test.pass(description);
+	break;
 	case "default":
 	test.info(description);
 	break;
